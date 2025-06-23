@@ -5,13 +5,13 @@ main.py ─ Gerador de legendas automáticas + tradução pt‑BR (Plex‑ready)
 • Transcrição OpenAI‑Whisper (modelo tiny por default)  
 • Tradução via OpenAI Chat API (detecta SDK novo ≥1.0 *ou* antigo <1.0)  
 • Corrige overlaps (≥3 ms) e remove backticks/aspas da tradução  
-• Grava UTF‑8:  <video>.en.srt  e  <video>.pob.srt  (Portuguese‑Brazil)
+• Grava UTF‑8:  <video>.en.srt  e  <video>.pt-BR.srt  (Portuguese‑Brazil)
 
 CONFIGURAÇÕES RÁPIDAS – edite aqui ou passe por CLI
 """
 # ───────── Config section ─────────
 OPENAI_API_KEY            = ""        # "" → usa variável de ambiente
-TARGET_LANGUAGE_CODE      = "pob"     # extensão do SRT traduzido
+TARGET_LANGUAGE_CODE      = "pt-BR"     # extensão do SRT traduzido
 SRT_SOURCE_LANGUAGE_CODE  = "en"      # extensão do SRT original
 CHUNK_SIZE_CHARS          = 1500      # reservado (não usado neste script)
 CHUNK_OVERLAP_CHARS       = 150       # reservado
@@ -90,7 +90,7 @@ def translate(texts: List[str], engine: str, lang: str,
     if engine == "google":
         from googletrans import Translator
         iso = lang.split("-")[0].lower()
-        if iso == "pob":   # google não reconhece “pob”
+        if iso == "pt-BR":   # google não reconhece “pt-BR”
             iso = "pt"
         translated = Translator().translate(texts, dest=iso)
         return [sanitize_line(t.text) for t in translated]
@@ -185,7 +185,7 @@ def main():
     ap.add_argument("--translate-engine", default="openai",
                     choices=["openai", "google", "none"])
     ap.add_argument("--lang", default=TARGET_LANGUAGE_CODE,
-                    help="Extensão da legenda traduzida (pob = pt‑BR)")
+                    help="Extensão da legenda traduzida (pt-BR = pt‑BR)")
     ap.add_argument("--overwrite", action="store_true",
                     help="Recria SRT mesmo se já existir")
     ap.add_argument("--sleep", type=float, default=DEFAULT_SLEEP_BETWEEN_API,
