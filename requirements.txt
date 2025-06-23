@@ -1,0 +1,12 @@
+# --- Core functionality --------------------------------------------------
+openai-whisper         # speech-to-text engine (installs torch if not present)
+openai>=1.0.0          # Chat Completion API client (auto‑detected by the script)
+ffmpeg-python          # lightweight wrapper to call FFmpeg binaries
+
+# --- Google Translate fallback -------------------------------------------
+googletrans==3.1.0a0   # last stable version (works with httpcore 0.x)
+httpx<0.25             # googletrans dependency pin
+httpcore<1             # googletrans dependency pin
+
+# --- Nice‑to‑have (auto‑handled if missing) ------------------------------
+psutil                 # optional: lets Whisper pick best model automatically
