@@ -52,14 +52,14 @@ Windows PowerShell → `setx OPENAI_API_KEY "sk-***"`
 ## 5. Run a quick test
 
 ```bash
-python3 main.py /path/to/some/video.mp4 --translate-engine openai --lang pob
+python3 main.py /path/to/some/video.mp4 --translate-engine openai --lang pt-BR
 ```
 
 *Outputs*
 
 ```
 video.en.srt         ← English transcription
-video.pob.srt        ← Portuguese (Brazil) translation
+video.pt-BR.srt        ← Portuguese (Brazil) translation
 ```
 
 ---
@@ -70,7 +70,7 @@ video.pob.srt        ← Portuguese (Brazil) translation
 python3 main.py /media/Study \
   --model tiny \
   --translate-engine openai \
-  --lang pob \
+  --lang pt-BR \
   --sleep 1.0
 ```
 
@@ -83,10 +83,8 @@ python3 main.py /media/Study \
 | **“openai.OpenAI not found”**               | `pip install -U openai` (v ≥ 1.0)                                               |
 | **`googletrans` httpcore error**            | Dependencies already pinned in *requirements.txt*                               |
 | **Whisper runs out of RAM**                 | Swap to `--model tiny` or `base`                                                |
-| **Plex shows only the first subtitle file** | Make sure filenames match the video and use `.pob.srt`; run “Refresh Metadata”. |
+| **Plex shows only the first subtitle file** | Make sure filenames match the video and use `.pt-BR.srt`; run “Refresh Metadata”. |
 
 ---
 
 Good subtitles & happy binge‑watching! 🎬
-
-```
