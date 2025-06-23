@@ -1,6 +1,6 @@
 # Automatic Subtitle Generator (`main.py`) <!-- omit in toc -->
 
-Whisper ➜ `.en.srt` + `.pob.srt` ready for Plex
+Whisper ➜ `.en.srt` + `.pt-BR.srt` ready for Plex
 Transcribes any video/audio file, fixes time‑code overlaps, and translates—using either **OpenAI** or **Google Translate**—while preserving technical terminology.
 
 ---
@@ -78,10 +78,10 @@ Outputs:
 
 ```
 Movie.en.srt
-Movie.pob.srt
+Movie.pt-BR.srt
 ```
 
-`pob` is the ISO‑639‑2 code used by OpenSubtitles for **Portuguese (Brazil)**, automatically recognised by Plex.
+`pt-BR` is the ISO‑639‑2 code used by OpenSubtitles for **Portuguese (Brazil)**, automatically recognised by Plex.
 
 ## Configuration
 
@@ -92,7 +92,7 @@ Located at the top of `main.py` for quick editing.
 | Variable                                   | Default    | Purpose                               |
 | ------------------------------------------ | ---------- | ------------------------------------- |
 | `OPENAI_API_KEY`                           | `""`       | If left blank, script reads from env. |
-| `TARGET_LANGUAGE_CODE`                     | `pob`      | File‑extension of translated SRT.     |
+| `TARGET_LANGUAGE_CODE`                     | `pt-BR`      | File‑extension of translated SRT.     |
 | `SRT_SOURCE_LANGUAGE_CODE`                 | `en`       | File‑extension of source SRT.         |
 | `CHUNK_SIZE_CHARS` / `CHUNK_OVERLAP_CHARS` | 1500 / 150 | Reserved for future chunking.         |
 | `DEFAULT_SLEEP_BETWEEN_API`                | `1.0` s    | Delay between OpenAI calls.           |
@@ -107,14 +107,14 @@ optional arguments:
   --model tiny|base|small|medium|large   Whisper model (default: tiny)
   --device cpu|cuda                      Where to run Whisper (default: cpu)
   --translate-engine openai|google|none  Select translator (default: openai)
-  --lang pob|pt|por|...                  Extension for translated SRT (default: pob)
+  --lang pt-BR|pt|por|...                  Extension for translated SRT (default: pt-BR)
   --overwrite                            Regenerate SRT even if they exist
   --sleep FLOAT                          Seconds to wait between OpenAI requests
 ```
 
 ## Plex Compatibility
 
-* Use `.pob.srt` for **Portuguese (Brazil)**; `.pt.srt`/`.por.srt` are recognised but show as generic “Portuguese”.
+* Use `.pt-BR.srt` for **Portuguese (Brazil)**; `.pt.srt`/`.por.srt` are recognised but show as generic “Portuguese”.
 * File name **must** exactly match the video (case‑sensitive).
 * If Plex still doesn’t list new subs, choose **Refresh Metadata** or **Analyze** on the folder.
 
@@ -131,7 +131,7 @@ optional arguments:
 ## How the Translation Prompt Works
 
 > **System message**:
-> “Translate from EN to POB (Português do Brasil).
+> “Translate from EN to pt-BR (Português do Brasil).
 > **Do NOT translate** technical terms, cloud service names, commands, error codes, UPPERCASE words, or text inside backticks.
 > Return plain text.”
 
