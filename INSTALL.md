@@ -86,5 +86,4 @@ python3 main.py /media/Study \
 | **Plex shows only the first subtitle file** | Make sure filenames match the video and use `.pt-BR.srt`; run “Refresh Metadata”. |
 
 ---
-
 Good subtitles & happy binge‑watching! 🎬
